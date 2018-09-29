@@ -1,0 +1,14 @@
+create table application_user (
+  ID bigserial PRIMARY KEY NOT NULL,
+  NAME TEXT NOT NULL
+);
+
+create table route (
+  ID bigserial PRIMARY KEY NOT NULL,
+  USER_ID BIGINT references application_user(ID),
+  NAME TEXT NOT NULL,
+  START_COORDINATE_LAT FLOAT NOT NULL,
+  START_COORDINATE_LONG FLOAT NOT NULL,
+  END_COORDINATE_LAT FLOAT NOT NULL,
+  END_COORDINATE_LONG FLOAT NOT NULL
+);

@@ -1,0 +1,1 @@
+web: java -Dserver.port=45345 $JAVA_OPTS -jar build/libs/*.jar
