@@ -5,3 +5,4 @@ deploy:
   provider: heroku
   api_key:
     secure: "94a01d9a-ba76-4f83-ada4-e383ee9d7bcd"
+  app: stop-marshrutka
