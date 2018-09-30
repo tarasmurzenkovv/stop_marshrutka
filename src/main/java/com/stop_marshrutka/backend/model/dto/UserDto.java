@@ -11,6 +11,7 @@ public class UserDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long userId;
     private String userName;
+    private UserType userType;
     @JsonProperty("routes")
     private List<RouteDto> routeDtoList;
 }
