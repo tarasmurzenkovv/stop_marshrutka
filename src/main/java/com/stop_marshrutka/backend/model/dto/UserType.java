@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 @Getter
 public enum UserType {
-    DRIVER("Driver"), CUSTOMER("Customer");
+    DRIVER("Driver"), PASSENGER("Passenger");
 
     private final String type;
 

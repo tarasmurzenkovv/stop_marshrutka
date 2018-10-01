@@ -10,16 +10,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserMapper {
+public class DriverMapper {
     private final UserTypeRepository userTypeRepository;
 
-    public UserEntity toUserEntity(UserDto userDto) {
+    public UserEntity toDriverEntity(UserDto userDto) {
         UserEntity userEntity = new UserEntity();
         UserTypeEntity userTypeEntity = userTypeRepository
                 .findForStringValue(userDto.getUserType())
                 .orElseThrow(() -> new RuntimeException("Cannot find for type" + userDto.getUserType().getType()));
         userEntity.setUserTypeEntity(userTypeEntity);
-        userEntity.setUserName(userDto.getUserName());
+        /*userEntity.get(userDto.getUserName());*/
 
         return userEntity;
     }
@@ -28,7 +28,7 @@ public class UserMapper {
         UserDto userDto = new UserDto();
 
         userDto.setUserId(userEntity.getId());
-        userDto.setUserName(userEntity.getUserName());
+        /*userDto.setUserName(userEntity.getUserName());*/
         userDto.setUserType(userEntity.getUserTypeEntity().getUserType());
 
         return userDto;

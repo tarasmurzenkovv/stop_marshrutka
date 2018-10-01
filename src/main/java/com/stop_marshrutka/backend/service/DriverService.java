@@ -1,8 +1,8 @@
 package com.stop_marshrutka.backend.service;
 
 import com.stop_marshrutka.backend.model.dto.UserDto;
-import com.stop_marshrutka.backend.model.entities.RouteEntity;
 import com.stop_marshrutka.backend.model.entities.UserEntity;
+import com.stop_marshrutka.backend.model.entities.RouteEntity;
 import com.stop_marshrutka.backend.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,14 +14,14 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
-    private final UserMapper userMapper;
+public class DriverService {
+    private final DriverMapper driverMapper;
     private final RouteMapper routeMapper;
     private final UserRepository userRepository;
 
     @Transactional
-    public Long registerUser(final UserDto userDto) {
-        final UserEntity userEntity = userMapper.toUserEntity(userDto);
+    public Long registerDriver(final UserDto userDto) {
+        final UserEntity userEntity = driverMapper.toDriverEntity(userDto);
         if (!CollectionUtils.isEmpty(userDto.getRouteDtoList())) {
             final List<RouteEntity> routeEntities = userDto.getRouteDtoList()
                     .stream()
@@ -34,7 +34,7 @@ public class UserService {
 
     public UserDto findById(Long id) {
         return userRepository.findById(id)
-                .map(userMapper::toUserDto)
+                .map(driverMapper::toUserDto)
                 .orElseThrow(() -> new RuntimeException("Cannot find user for id" + id));
     }
 }
