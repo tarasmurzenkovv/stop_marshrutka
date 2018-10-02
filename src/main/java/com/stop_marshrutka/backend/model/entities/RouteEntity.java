@@ -31,6 +31,6 @@ public class RouteEntity {
     private Double endtLog;
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "APPLICATION_USER")
     private UserEntity userEntity;
 }
