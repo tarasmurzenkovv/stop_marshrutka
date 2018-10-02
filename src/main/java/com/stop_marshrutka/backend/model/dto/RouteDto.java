@@ -13,9 +13,14 @@ import lombok.ToString;
 public class RouteDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long id;
+
     private String name;
+
     private Double startLat;
+
     private Double startLog;
+
     private Double endLat;
+
     private Double endLog;
 }

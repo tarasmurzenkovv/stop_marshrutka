@@ -1,7 +1,7 @@
 package com.stop_marshrutka.backend.model.entities;
 
 import com.stop_marshrutka.backend.model.dto.UserType;
-import com.stop_marshrutka.backend.service.UserTypeConverter;
+import com.stop_marshrutka.backend.service.convertors.UserTypeConverter;
 import lombok.Getter;
 import lombok.Setter;
 

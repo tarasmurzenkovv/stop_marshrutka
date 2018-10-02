@@ -1,6 +1,6 @@
 package com.stop_marshrutka.backend.controllers;
 
-import com.stop_marshrutka.backend.model.dto.UserDto;
+import com.stop_marshrutka.backend.model.dto.DriverDto;
 import com.stop_marshrutka.backend.service.DriverService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
@@ -13,12 +13,12 @@ public class DriverController {
     private final DriverService driverService;
 
     @PostMapping(value = "/driver")
-    public Long register(@RequestBody final UserDto userDto) {
-        return driverService.registerDriver(userDto);
+    public Long register(@RequestBody final DriverDto driverDto) {
+        return driverService.registerDriver(driverDto);
     }
 
     @GetMapping(value = "/driver/{id}")
-    public UserDto find(@PathVariable("id") Long id) {
+    public DriverDto find(@PathVariable("id") Long id) {
         return driverService.findById(id);
     }
 }
