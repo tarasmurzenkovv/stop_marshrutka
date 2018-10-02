@@ -1,6 +1,5 @@
 package com.stop_marshrutka.backend.model.entities;
 
-import com.stop_marshrutka.backend.service.UserTypeConverter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,13 +16,16 @@ public class UserEntity {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "NAME")
-    private String userName;
-
-    @OneToMany(mappedBy = "userEntity", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.PERSIST)
     private List<RouteEntity> routeEntities;
+
+    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.PERSIST)
+    private List<CarEntity> carEntities;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_TYPE_ID")
     private UserTypeEntity userTypeEntity;
+
+    @Embedded
+    private UserInformation userInformation;
 }

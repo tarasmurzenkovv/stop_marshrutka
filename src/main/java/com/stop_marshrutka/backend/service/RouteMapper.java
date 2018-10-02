@@ -1,8 +1,8 @@
 package com.stop_marshrutka.backend.service;
 
 import com.stop_marshrutka.backend.model.dto.RouteDto;
-import com.stop_marshrutka.backend.model.entities.RouteEntity;
 import com.stop_marshrutka.backend.model.entities.UserEntity;
+import com.stop_marshrutka.backend.model.entities.RouteEntity;
 import org.springframework.stereotype.Service;
 
 @Service
