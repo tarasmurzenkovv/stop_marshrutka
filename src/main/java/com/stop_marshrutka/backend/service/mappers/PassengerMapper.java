@@ -24,7 +24,7 @@ public class PassengerMapper {
         List<RouteDto> routeDtoList = passengerDto.getRouteDtoList();
 
         userEntity.setRouteEntities(routeMapper.toEntities(routeDtoList, userEntity));
-        userEntity.setUserTypeEntity(userTypeRepository.getDriverType());
+        userEntity.setUserTypeEntity(userTypeRepository.getPassengerType());
         userEntity.setUserInformation(userInformationMapper.toUserInformation(userInformationDto));
 
         return userEntity;
