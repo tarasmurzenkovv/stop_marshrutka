@@ -13,6 +13,8 @@ public class UserInformationMapper {
         userInformation.setTelephoneNumber(userInformationDto.getTelephoneNumber());
         userInformation.setLogin(userInformationDto.getLogin());
         userInformation.setPassword(userInformationDto.getPassword());
+        userInformation.setName(userInformationDto.getName());
+        userInformation.setSurname(userInformationDto.getSurname());
         return userInformation;
     }
 
