@@ -1,8 +1,8 @@
 language: java
 jdk: oraclejdk8
-script: ./gradlew clean build
+script: "./gradlew clean build"
 deploy:
   provider: heroku
   api_key:
-    secure: "94a01d9a-ba76-4f83-ada4-e383ee9d7bcd"
+    secure: cZYdGdIm9ea9+Z3NU68VY2QtNS4qHSOHqcWNiB9mLOJVt/7gQd5Pc3umAM+Qtt2Sb12et15lJQucFfXnjJlXnCc8JZhDYjorlikRbicvcB2PCxCctBo++xBQ0VVClvkTAKLBhV+LbG24dsuWM6blFbSoxu75MGwhPHvvr73yTXvrqHC4G3BvpesoG3ZHxkalz3Pa0PScm05znWpUaXtuSp9J6UfQ/C+UF0nHwjwgzUASyHrwNh/Lx9YIOWk51/fnWrK9mludHsRaO7k0oBaCblyO/fjSoQ31RN1P4fiTRc1k6bZ7P+zLmI5ge2JhEPl5XjrbxbDWt+AptVEVA9/LyiSpheZoVij2iFoVpgvzdMzpKatvcal5Hk7rfv8xjCLHULY/54cB/K5v3c7DhzQ/M7sW55a2UvlGeGvClQMqWujYNJhyFW3kUmNT6Kw5aAh7YZR0vS74IvNK2fD5GV1q0luVt2Bvk89ffeZgdyJRtagSj8spLQ2q2eAQjaiZnrhTfkGvWwTuzU+H76+LygowDR4o2W9ihr7YXTsDSKf++ryNQeBM6YvGtM/RN2SOXzKmxuQxmucdIEjU55UnbIs5X2c9jD1dEDo6x1V9xzwDP7sWtgf7dD3uom/hPOMWraI3uAR2kl7jU4HyzxMIwyCsPqNmVyzvg5iAn2COQSXyPoE=
   app: stop-marshrutka
