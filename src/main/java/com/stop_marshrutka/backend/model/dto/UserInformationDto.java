@@ -7,11 +7,16 @@ import lombok.*;
 @AllArgsConstructor
 @ToString(exclude = "password")
 public class UserInformationDto {
+
     private String login;
+
     private String password;
+
     private String email;
+
     private String telephoneNumber;
+
     private String name;
+
     private String surname;
-    private UserType userType;
 }
