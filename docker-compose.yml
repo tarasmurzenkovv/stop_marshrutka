@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  application_db:
+    container_name: application_db
+    image: postgres:latest
+    ports:
+      - $DB_PORT:$DB_PORT
+    volumes:
+      - application_db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+  stop_marshrutka_backend:
+    build: backend_service/stop_marshrutka_dockerfile
+    image: stop_marshrutka
+    depends_on:
+      - application_db
+    ports:
+      - $APPLICATION_PORT:$APPLICATION_PORT
+    environment:
+      - JDBC_DATABASE_USERNAME=$POSTGRES_USER
+      - JDBC_DATABASE_PASSWORD=$POSTGRES_PASSWORD
+      - JDBC_DATABASE_URL=jdbc:postgresql://application_db:$DB_PORT/$POSTGRES_DB
+
+volumes:
+  application_db: {}
