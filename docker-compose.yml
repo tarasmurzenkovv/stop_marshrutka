@@ -1,6 +1,12 @@
 version: '3'
 
 services:
+  application_geo_db:
+    container_name: application_geo_db
+    image: redis:latest
+    ports:
+      - $REDIS_PORT:$REDIS_PORT
+
   application_db:
     container_name: application_db
     image: postgres:latest
@@ -14,11 +20,26 @@ services:
       - POSTGRES_DB=$POSTGRES_DB
       - PGDATA=/var/lib/postgresql/data/pgdata
 
-  stop_marshrutka_backend:
-    build: backend_service/stop_marshrutka_dockerfile
-    image: stop_marshrutka
+  db_management_service:
+    build:
+      context: ./dbmanagement
+      dockerfile: Dockerfile
+    image: db_management
     depends_on:
       - application_db
+    environment:
+      - JDBC_DATABASE_USERNAME=$POSTGRES_USER
+      - JDBC_DATABASE_PASSWORD=$POSTGRES_PASSWORD
+      - JDBC_DATABASE_URL=jdbc:postgresql://application_db:$DB_PORT/$POSTGRES_DB
+
+  stop_marshrutka_backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: stop_marshrutka
+    depends_on:
+      - db_management_service
+      - application_geo_db
     ports:
       - $APPLICATION_PORT:$APPLICATION_PORT
     environment:

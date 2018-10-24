@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="Taras Murzenkov">
+        <createTable tableName="APPLICATION_USER_TYPE">
+            <column name="ID" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="USER_TYPE" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="Taras Murzenkov">
+        <insert tableName="APPLICATION_USER_TYPE">
+            <column name="USER_TYPE" value="'Driver'"/>
+            <column name="USER_TYPE" value="'Passenger'"/>
+        </insert>
+    </changeSet>
+    <changeSet id="3" author="Taras Murzenkov">
+        <createTable tableName="APPLICATION_USER">
+            <column name="ID" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="USER_TYPE_ID" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LOGIN" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMAIL" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TELEPHONE_NUMBER" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SURNAME" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="APPLICATION_USER"
+                                 baseColumnNames="USER_TYPE_ID"
+                                 constraintName="FK_USER_TYPE"
+                                 referencedTableName="APPLICATION_USER_TYPE"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+    <changeSet id="4" author="Taras Murzenkov">
+        <createTable tableName="CAR">
+            <column name="ID" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="DRIVER_ID" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CAR_NUMBER" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CAR_TYPE" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="CAR"
+                                 baseColumnNames="DRIVER_ID"
+                                 constraintName="FK_CAR_APPLICATION_USER"
+                                 referencedTableName="APPLICATION_USER"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+    <changeSet id="5" author="Taras Murzenkov">
+        <createTable tableName="ROUTE">
+            <column name="ID" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="APPLICATION_USER" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="START_COORDINATE_LAT" type="float">
+                <constraints nullable="false"/>
+            </column>
+            <column name="START_COORDINATE_LONG" type="float">
+                <constraints nullable="false"/>
+            </column>
+            <column name="END_COORDINATE_LAT" type="float">
+                <constraints nullable="false"/>
+            </column>
+            <column name="END_COORDINATE_LONG" type="float">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="ROUTE"
+                                 baseColumnNames="APPLICATION_USER"
+                                 constraintName="FK_ROUTE_APPLICATION_USER"
+                                 referencedTableName="APPLICATION_USER"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+</databaseChangeLog>
